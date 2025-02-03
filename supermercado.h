@@ -10,13 +10,11 @@
 #define MAX_ITENS 5
 #define MAX_PRODUTOS 10
 
-// Estrutura para o cadastro do usuário
 typedef struct {
     char nome[100];
     char prontuario[15];
 } Usuario;
 
-// Estrutura para os produtos nas gôndolas
 typedef struct {
     char nome[100];
     char descricao[200];
@@ -24,45 +22,42 @@ typedef struct {
     float preco;
 } Produto;
 
-// Estrutura para as pilhas de gôndolas
 typedef struct {
     Produto itens[MAX_ITENS];
     int topo;
 } Pilha;
 
-// Estrutura para a fila do PDV
 typedef struct {
     Produto produtos[MAX_PRODUTOS];
     int frente;
     int tras;
 } Fila;
 
+// Funções principais
+int login();
+void cadastrar_usuario();
+
+// Operações das gôndolas
+extern Pilha gondolas[MAX_PRODUTOS];
+void inicializar_gondolas();
 void abastecer_gondola();
-void pdv();
 
-// Funções para manipulação dos usuários
-void cadastrar_usuario(FILE *arquivo);
-int buscar_usuario(FILE *arquivo, char *nome, char *prontuario);
-void ordenar_usuarios(FILE *arquivo);
-int compara_usuarios(const void *a, const void *b);
+// Operações do PDV
+extern Fila fila_pdv;
+extern Pilha carrinho;
+void inicializar_pdv();
+void adicionar_ao_carrinho();
+void processar_pdv();
 
-// Funções para manipulação da pilha
-void inicializar_pilha(Pilha *p);
+// Funções auxiliares
 int pilha_cheia(Pilha *p);
 int pilha_vazia(Pilha *p);
 void inserir_produto(Pilha *p, Produto prod);
 Produto retirar_produto(Pilha *p);
-
-// Funções para manipulação da fila
-void inicializar_fila(Fila *f);
 int fila_cheia(Fila *f);
 int fila_vazia(Fila *f);
 void adicionar_na_fila(Fila *f, Produto prod);
 Produto remover_da_fila(Fila *f);
-
-// Função para gerar o cupom fiscal
 void gerar_cupom_fiscal(Fila *f);
-
-int login();
 
 #endif

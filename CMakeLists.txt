@@ -3,4 +3,4 @@ project(Teste C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(Teste login.c)
+add_executable(Teste login.c main.c cadastro.c gandolas.c pdv.c)

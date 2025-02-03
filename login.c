@@ -1,110 +1,72 @@
+// login.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "supermercado.h"
 
-#define MAX_USUARIOS 30
+int login() {
+    FILE *arquivo = fopen("USUARIOS.DAT", "rb");
+    if (!arquivo) {
+        printf("\nErro: Arquivo USUARIOS.DAT nao encontrado!\n");
+        exit(1);
+    }
 
-// Estrutura para armazenar os dados do usuário
-typedef struct {
-    char nome[100];
-    char prontuario[20];
-} Usuario;
-
-// Função para realizar a busca binária no vetor de usuários
-int busca_binaria(Usuario usuarios[], int n, const char* nome, const char* prontuario) {
-    int esquerda = 0, direita = n - 1;
+    // Obter tamanho do arquivo
+    fseek(arquivo, 0, SEEK_END);
+    long file_size = ftell(arquivo);
+    rewind(arquivo);
     
-    while (esquerda <= direita) {
-        int meio = (esquerda + direita) / 2;
-        
-        // Compara o nome para achar a posição correta
-        int cmp = strcmp(nome, usuarios[meio].nome);
+    int num_usuarios = file_size / sizeof(Usuario);
+    Usuario *usuarios = (Usuario*)malloc(file_size);
+    
+    if (!usuarios) {
+        printf("\nErro de alocacao de memoria!\n");
+        fclose(arquivo);
+        exit(1);
+    }
+
+    // Ler todos os usuários
+    fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
+    fclose(arquivo);
+
+    // Solicitar credenciais
+    char nome[100], prontuario[15];
+    printf("\n=== LOGIN ===\n");
+    printf("Nome: ");
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+    
+    printf("Prontuario: ");
+    fgets(prontuario, sizeof(prontuario), stdin);
+    prontuario[strcspn(prontuario, "\n")] = '\0';
+
+    // Busca binária
+    int encontrado = 0;
+    int left = 0, right = num_usuarios - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        int cmp = strcmp(nome, usuarios[mid].nome);
         
         if (cmp == 0) {
-            // Se os nomes são iguais, verifica o prontuário
-            if (strcmp(prontuario, usuarios[meio].prontuario) == 0) {
-                return meio; // Encontrou o usuário
-            } else {
-                return -1; // Prontuário não corresponde
+            if (strcmp(prontuario, usuarios[mid].prontuario) == 0) {
+                encontrado = 1;
+                break;
             }
+            break;
         } else if (cmp < 0) {
-            direita = meio - 1; // Nome está antes
+            right = mid - 1;
         } else {
-            esquerda = meio + 1; // Nome está depois
+            left = mid + 1;
         }
     }
 
-    return -1; // Não encontrou o usuário
-}
-
-// Função para carregar os dados do arquivo binário
-int carregar_usuarios(Usuario usuarios[]) {
-    FILE *arquivo = fopen("USUARIOS.DAT", "rb");
+    free(usuarios);
     
-    if (!arquivo) {
-        printf("Erro ao abrir o arquivo de usuários.\n");
-        return 0;
+    if (!encontrado) {
+        printf("\nAcesso negado! Credenciais invalidas.\n");
+        exit(1);
     }
-
-    int num_usuarios = 0;
-    while (fread(&usuarios[num_usuarios], sizeof(Usuario), 1, arquivo)) {
-        num_usuarios++;
-    }
-
-    fclose(arquivo);
-    return num_usuarios;
-}
-
-// Função para remover qualquer \n no final das strings
-void remove_newline(char* str) {
-    const size_t len = strlen(str);
-    if (len > 0 && str[len - 1] == '\n') {
-        str[len - 1] = '\0';
-    }
-}
-
-// Função de login
-int login() {
-    char nome[100];
-    char prontuario[20];
-    Usuario usuario;
-    FILE *arquivo = fopen("./USUARIOS.DAT", "rb");
     
-    if (!arquivo) {
-        printf("Erro ao abrir o arquivo de usuários.\n");
-        return 0;
-    }
-
-    // Solicitar nome e prontuário ao usuário
-    printf("Digite seu nome: ");
-    fgets(nome, sizeof(nome), stdin);
-    nome[strcspn(nome, "\n")] = '\0';  // Remove a quebra de linha no final da string
-
-    printf("Digite seu prontuário: ");
-    fgets(prontuario, sizeof(prontuario), stdin);
-    prontuario[strcspn(prontuario, "\n")] = '\0';  // Remove a quebra de linha no final da string
-
-    // Verifica se os dados correspondem a algum usuário no arquivo
-    while (fread(&usuario, sizeof(Usuario), 1, arquivo)) {
-        if (strcmp(nome, usuario.nome) == 0 && strcmp(prontuario, usuario.prontuario) == 0) {
-            fclose(arquivo);
-            printf("Login realizado com sucesso!\n");
-            return 1;  // Login bem-sucedido
-        }
-    }
-
-    fclose(arquivo);
-    printf("Nome ou prontuário inválidos.\n");
-    return 0;  // Falha no login
-}
-
-int main() {
-    int log = login();
-    if (log == 0) {
-        exit(0);
-    }else if (log == 1) {
-
-    }
-
-    return 0;
+    printf("\nLogin realizado com sucesso!\n");
+    return 1;
 }
