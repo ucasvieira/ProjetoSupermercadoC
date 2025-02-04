@@ -96,24 +96,10 @@ CMakeFiles/Teste.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/main.c.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\main.c -o CMakeFiles\Teste.dir\main.c.s
 
-CMakeFiles/Teste.dir/cadastro.c.obj: CMakeFiles/Teste.dir/flags.make
-CMakeFiles/Teste.dir/cadastro.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/cadastro.c
-CMakeFiles/Teste.dir/cadastro.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Teste.dir/cadastro.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/cadastro.c.obj -MF CMakeFiles\Teste.dir\cadastro.c.obj.d -o CMakeFiles\Teste.dir\cadastro.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cadastro.c
-
-CMakeFiles/Teste.dir/cadastro.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Teste.dir/cadastro.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cadastro.c > CMakeFiles\Teste.dir\cadastro.c.i
-
-CMakeFiles/Teste.dir/cadastro.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/cadastro.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cadastro.c -o CMakeFiles\Teste.dir\cadastro.c.s
-
 CMakeFiles/Teste.dir/gandolas.c.obj: CMakeFiles/Teste.dir/flags.make
 CMakeFiles/Teste.dir/gandolas.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gandolas.c
 CMakeFiles/Teste.dir/gandolas.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Teste.dir/gandolas.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Teste.dir/gandolas.c.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/gandolas.c.obj -MF CMakeFiles\Teste.dir\gandolas.c.obj.d -o CMakeFiles\Teste.dir\gandolas.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gandolas.c
 
 CMakeFiles/Teste.dir/gandolas.c.i: cmake_force
@@ -127,7 +113,7 @@ CMakeFiles/Teste.dir/gandolas.c.s: cmake_force
 CMakeFiles/Teste.dir/pdv.c.obj: CMakeFiles/Teste.dir/flags.make
 CMakeFiles/Teste.dir/pdv.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/pdv.c
 CMakeFiles/Teste.dir/pdv.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Teste.dir/pdv.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Teste.dir/pdv.c.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/pdv.c.obj -MF CMakeFiles\Teste.dir\pdv.c.obj.d -o CMakeFiles\Teste.dir\pdv.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\pdv.c
 
 CMakeFiles/Teste.dir/pdv.c.i: cmake_force
@@ -138,22 +124,36 @@ CMakeFiles/Teste.dir/pdv.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/pdv.c.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\pdv.c -o CMakeFiles\Teste.dir\pdv.c.s
 
+CMakeFiles/Teste.dir/admin.c.obj: CMakeFiles/Teste.dir/flags.make
+CMakeFiles/Teste.dir/admin.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/admin.c
+CMakeFiles/Teste.dir/admin.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Teste.dir/admin.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/admin.c.obj -MF CMakeFiles\Teste.dir\admin.c.obj.d -o CMakeFiles\Teste.dir\admin.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\admin.c
+
+CMakeFiles/Teste.dir/admin.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Teste.dir/admin.c.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\admin.c > CMakeFiles\Teste.dir\admin.c.i
+
+CMakeFiles/Teste.dir/admin.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/admin.c.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\admin.c -o CMakeFiles\Teste.dir\admin.c.s
+
 # Object files for target Teste
 Teste_OBJECTS = \
 "CMakeFiles/Teste.dir/login.c.obj" \
 "CMakeFiles/Teste.dir/main.c.obj" \
-"CMakeFiles/Teste.dir/cadastro.c.obj" \
 "CMakeFiles/Teste.dir/gandolas.c.obj" \
-"CMakeFiles/Teste.dir/pdv.c.obj"
+"CMakeFiles/Teste.dir/pdv.c.obj" \
+"CMakeFiles/Teste.dir/admin.c.obj"
 
 # External object files for target Teste
 Teste_EXTERNAL_OBJECTS =
 
 Teste.exe: CMakeFiles/Teste.dir/login.c.obj
 Teste.exe: CMakeFiles/Teste.dir/main.c.obj
-Teste.exe: CMakeFiles/Teste.dir/cadastro.c.obj
 Teste.exe: CMakeFiles/Teste.dir/gandolas.c.obj
 Teste.exe: CMakeFiles/Teste.dir/pdv.c.obj
+Teste.exe: CMakeFiles/Teste.dir/admin.c.obj
 Teste.exe: CMakeFiles/Teste.dir/build.make
 Teste.exe: CMakeFiles/Teste.dir/linkLibs.rsp
 Teste.exe: CMakeFiles/Teste.dir/objects1.rsp

@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +6,20 @@
 
 // Função de comparação para ordenação
 int compara_usuarios(const void *a, const void *b) {
-    return strcmp(((Usuario*)a)->nome, ((Usuario*)b)->nome);
+    const Usuario *ua = (const Usuario *)a;
+    const Usuario *ub = (const Usuario *)b;
+
+    // Comparação case-insensitive
+    const char *nomeA = ua->nome;
+    const char *nomeB = ub->nome;
+
+    while (*nomeA && *nomeB) {
+        int diff = tolower((unsigned char)*nomeA) - tolower((unsigned char)*nomeB);
+        if (diff != 0) return diff;
+        nomeA++;
+        nomeB++;
+    }
+    return *nomeA - *nomeB;
 }
 
 void cadastrar_usuario() {
@@ -42,6 +56,10 @@ void cadastrar_usuario() {
     printf("Nome: ");
     fgets(novo.nome, 100, stdin);
     novo.nome[strcspn(novo.nome, "\n")] = '\0';
+
+    for(int i = 0; novo.nome[i]; i++) {
+        novo.nome[i] = tolower(novo.nome[i]);
+    }
     
     printf("Prontuário: ");
     fgets(novo.prontuario, 15, stdin);
@@ -76,11 +94,23 @@ void cadastrar_usuario() {
 
 void cadastrar_usuarios_padrao() {
     Usuario padroes[] = {
-        {"Domingos Lucas Latorre de Oliveira", "CJ146456"},
-        {"Leandro Pinto Santana", "CP220383"},
-        // ... (inserir todos os outros usuários listados na questão)
-        {"Cesar Lopes Fernandes", "SP890534"},
-        {"Josceli Maria Tenorio", "SZ124382"}
+        {"Eurides Balbino da Silva", "SP07102X", ADMIN},
+        {"Domingos Bernardo Gomes Santos", "SP090888", ADMIN},
+        {"Andre Evandro Lourenco", "SP100092", ADMIN},
+        {"Miguel Angelo Tancredi Molina", "SP102763", ADMIN},
+        {"Antonio Airton Palladino", "SP112197", ADMIN},
+        {"Luis Fernando Aires Branco Menegueti", "SP145385", ADMIN},
+        {"Antonio Ferreira Viana", "SP200827", ADMIN},
+        {"Leonardo Bertholdo", "SP204973", ADMIN},
+        {"Marcelo Tavares de Santana", "SP20500X", ADMIN},
+        {"Wagner de Paula Gomes", "SP215016", ADMIN},
+        {"Daniel Marques Gomes de Morais", "SP220097", ADMIN},
+        {"Alexandre Beletti Ferreira", "SP226117", ADMIN},
+        {"Vladimir Camelo Pinto", "SP240291", ADMIN},
+        {"Leonardo Andrade Motta de Lima", "SP24031X", ADMIN},
+        {"Aldo Marcelo Paim", "SP240497", ADMIN},
+        {"Cesar Lopes Fernandes", "SP890534",USUARIO},
+        {"lucas","12345",ADMIN}
     };
 
     FILE *arquivo = fopen("USUARIOS.DAT", "wb");
@@ -94,3 +124,16 @@ void cadastrar_usuarios_padrao() {
     fclose(arquivo);
 }
 
+int main() {
+    printf("Selecione a opção desejada:\n1 - Cadastrar usuário\n2 - Cadastrar usuários padrão\n");
+    int opcao;
+    scanf("%i", &opcao);fflush(stdin);
+    if (opcao == 1) {
+        cadastrar_usuario();
+    } else if (opcao == 2) {
+        cadastrar_usuarios_padrao();
+    } else {
+        printf("Opção inválida!\n");
+    }
+    return 0;
+}

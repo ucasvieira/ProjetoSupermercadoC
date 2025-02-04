@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/cadastro.c" "CMakeFiles/Teste.dir/cadastro.c.obj" "gcc" "CMakeFiles/Teste.dir/cadastro.c.obj.d"
+  "C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/admin.c" "CMakeFiles/Teste.dir/admin.c.obj" "gcc" "CMakeFiles/Teste.dir/admin.c.obj.d"
   "C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gandolas.c" "CMakeFiles/Teste.dir/gandolas.c.obj" "gcc" "CMakeFiles/Teste.dir/gandolas.c.obj.d"
   "C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/login.c" "CMakeFiles/Teste.dir/login.c.obj" "gcc" "CMakeFiles/Teste.dir/login.c.obj.d"
   "C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/main.c" "CMakeFiles/Teste.dir/main.c.obj" "gcc" "CMakeFiles/Teste.dir/main.c.obj.d"

@@ -2,18 +2,30 @@
 #include <stdio.h>
 #include "supermercado.h"
 
-int main() {
-    if (!login()) return 1;
+inicializar_gondolas();
 
-    inicializar_gondolas();
-    inicializar_pdv();
+int main() {
+    // Solicitar credenciais
+    char nome[100], prontuario[15];
+    printf("\n=== LOGIN ===\n");
+    printf("Nome: ");
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+
+    printf("Prontuario: ");
+    fgets(prontuario, sizeof(prontuario), stdin);
+    prontuario[strcspn(prontuario, "\n")] = '\0';
+    if (!login(nome, prontuario)) return 1;
+
 
     int opcao;
     do {
         printf("\n=== MENU PRINCIPAL ===\n");
-        printf("1. Abastecer gondolas\n");
-        printf("2. Adicionar ao carrinho\n");
-        printf("3. Processar compras\n");
+        printf("1. Caixa/PDV\n");
+        if (usuario_logado.tipo == ADMIN) {
+            printf("2. Abastecer gondolas\n");
+            printf("3. Gerenciar usuarios\n");
+        }
         printf("0. Sair\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
@@ -21,13 +33,21 @@ int main() {
 
         switch(opcao) {
             case 1:
-                abastecer_gondola();
+
             break;
             case 2:
-                adicionar_ao_carrinho();
+                if (usuario_logado.tipo == ADMIN) {
+                    menu_gondolas();
+                } else {
+                    printf("Opcao invalida!\n");
+                }
             break;
             case 3:
-                processar_pdv();
+                if (usuario_logado.tipo == ADMIN) {
+                    gerenciar_usuarios();
+                } else {
+                    printf("Opcao invalida!\n");
+                }
             break;
             case 0:
                 printf("Saindo...\n");

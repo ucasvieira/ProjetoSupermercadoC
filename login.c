@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "supermercado.h"
+Usuario usuario_logado;
 
-int login() {
+int login(char nome[100], char prontuario[15]) {
     FILE *arquivo = fopen("USUARIOS.DAT", "rb");
     if (!arquivo) {
         printf("\nErro: Arquivo USUARIOS.DAT nao encontrado!\n");
@@ -29,16 +30,7 @@ int login() {
     fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
     fclose(arquivo);
 
-    // Solicitar credenciais
-    char nome[100], prontuario[15];
-    printf("\n=== LOGIN ===\n");
-    printf("Nome: ");
-    fgets(nome, sizeof(nome), stdin);
-    nome[strcspn(nome, "\n")] = '\0';
 
-    printf("Prontuario: ");
-    fgets(prontuario, sizeof(prontuario), stdin);
-    prontuario[strcspn(prontuario, "\n")] = '\0';
 
     // Busca binária corrigida
     int encontrado = 0;
@@ -46,12 +38,13 @@ int login() {
 
     while (left <= right) {
         int mid = (left + right) / 2;
-        int cmp = strcmp(nome, usuarios[mid].nome);
+        int cmp = strcasecmp(nome, usuarios[mid].nome);
 
         if (cmp == 0) {
             // Encontrou nome, verificar prontuário
             if (strcmp(prontuario, usuarios[mid].prontuario) == 0) {
                 encontrado = 1;
+                usuario_logado = usuarios[mid];  // Armazena o usuário logado
                 break;
             }
             // Procurar por possíveis colisões de nome
@@ -83,13 +76,14 @@ int login() {
         }
     }
 
+
     free(usuarios);
-    
+
     if (!encontrado) {
-        printf("\nAcesso negado! Credenciais invalidas.\n");
+        printf("\nUSÚARIO E/OU PRONTUÁRIO INVÁLIDO!\n");
         exit(1);
     }
-    
+
     printf("\nLogin realizado com sucesso!\n");
     return 1;
 }

@@ -10,10 +10,17 @@
 #define MAX_ITENS 5
 #define MAX_PRODUTOS 10
 
+
+typedef enum {USUARIO, ADMIN} TipoUsuario;
+
+
 typedef struct {
     char nome[100];
     char prontuario[15];
+    TipoUsuario tipo;
 } Usuario;
+
+extern Usuario usuario_logado;
 
 typedef struct {
     char nome[100];
@@ -24,7 +31,7 @@ typedef struct {
 
 typedef struct {
     Produto itens[MAX_ITENS];
-    int topo;
+    int topo;  // Deve ser inicializado com -1
 } Pilha;
 
 typedef struct {
@@ -34,13 +41,16 @@ typedef struct {
 } Fila;
 
 // Funções principais
-int login();
+int login(char nome[100], char prontuario[15]);
 void cadastrar_usuario();
 
 // Operações das gôndolas
 extern Pilha gondolas[MAX_PRODUTOS];
-void inicializar_gondolas();
+extern Pilha carrinho;
+void menu_gondolas();
 void abastecer_gondola();
+void visualizar_gondolas();
+void reinicializar_gondolas();
 
 // Operações do PDV
 extern Fila fila_pdv;
@@ -60,4 +70,15 @@ void adicionar_na_fila(Fila *f, Produto prod);
 Produto remover_da_fila(Fila *f);
 void gerar_cupom_fiscal(Fila *f);
 
+
+// Funções de administração
+void gerenciar_usuarios();
+void listar_usuarios();
+void adicionar_usuario_admin();
+void remover_usuario();
+int compara_usuarios(const void *a, const void *b);
+void editar_usuario();
+
+// Função de checar arquivo
+void verificar_arquivo_usuarios();
 #endif

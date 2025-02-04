@@ -128,29 +128,29 @@ Teste/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/build
 .PHONY : Teste/fast
 
-cadastro.obj: cadastro.c.obj
-.PHONY : cadastro.obj
+admin.obj: admin.c.obj
+.PHONY : admin.obj
 
 # target to build an object file
-cadastro.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/cadastro.c.obj
-.PHONY : cadastro.c.obj
+admin.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/admin.c.obj
+.PHONY : admin.c.obj
 
-cadastro.i: cadastro.c.i
-.PHONY : cadastro.i
+admin.i: admin.c.i
+.PHONY : admin.i
 
 # target to preprocess a source file
-cadastro.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/cadastro.c.i
-.PHONY : cadastro.c.i
+admin.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/admin.c.i
+.PHONY : admin.c.i
 
-cadastro.s: cadastro.c.s
-.PHONY : cadastro.s
+admin.s: admin.c.s
+.PHONY : admin.s
 
 # target to generate assembly for a file
-cadastro.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/cadastro.c.s
-.PHONY : cadastro.c.s
+admin.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/admin.c.s
+.PHONY : admin.c.s
 
 gandolas.obj: gandolas.c.obj
 .PHONY : gandolas.obj
@@ -257,9 +257,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Teste
-	@echo ... cadastro.obj
-	@echo ... cadastro.i
-	@echo ... cadastro.s
+	@echo ... admin.obj
+	@echo ... admin.i
+	@echo ... admin.s
 	@echo ... gandolas.obj
 	@echo ... gandolas.i
 	@echo ... gandolas.s
