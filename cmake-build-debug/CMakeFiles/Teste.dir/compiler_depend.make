@@ -28,7 +28,7 @@ CMakeFiles/Teste.dir/admin.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupe
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/supermercado.h
 
-CMakeFiles/Teste.dir/gandolas.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gandolas.c \
+CMakeFiles/Teste.dir/gondolas.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gondolas.c \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/mm_malloc.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/syslimits.h \
@@ -135,6 +135,8 @@ CMakeFiles/Teste.dir/pdv.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSuperm
 
 C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/syslimits.h:
 
+C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gondolas.c:
+
 C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/admin.c:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h:
@@ -184,8 +186,6 @@ C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include
 C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h:
 
 C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/supermercado.h:
-
-C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gandolas.c:
 
 C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/login.c:
 

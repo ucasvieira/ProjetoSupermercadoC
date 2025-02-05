@@ -152,29 +152,29 @@ admin.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/admin.c.s
 .PHONY : admin.c.s
 
-gandolas.obj: gandolas.c.obj
-.PHONY : gandolas.obj
+gondolas.obj: gondolas.c.obj
+.PHONY : gondolas.obj
 
 # target to build an object file
-gandolas.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gandolas.c.obj
-.PHONY : gandolas.c.obj
+gondolas.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gondolas.c.obj
+.PHONY : gondolas.c.obj
 
-gandolas.i: gandolas.c.i
-.PHONY : gandolas.i
+gondolas.i: gondolas.c.i
+.PHONY : gondolas.i
 
 # target to preprocess a source file
-gandolas.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gandolas.c.i
-.PHONY : gandolas.c.i
+gondolas.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gondolas.c.i
+.PHONY : gondolas.c.i
 
-gandolas.s: gandolas.c.s
-.PHONY : gandolas.s
+gondolas.s: gondolas.c.s
+.PHONY : gondolas.s
 
 # target to generate assembly for a file
-gandolas.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gandolas.c.s
-.PHONY : gandolas.c.s
+gondolas.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Teste.dir\build.make CMakeFiles/Teste.dir/gondolas.c.s
+.PHONY : gondolas.c.s
 
 login.obj: login.c.obj
 .PHONY : login.obj
@@ -260,9 +260,9 @@ help:
 	@echo ... admin.obj
 	@echo ... admin.i
 	@echo ... admin.s
-	@echo ... gandolas.obj
-	@echo ... gandolas.i
-	@echo ... gandolas.s
+	@echo ... gondolas.obj
+	@echo ... gondolas.i
+	@echo ... gondolas.s
 	@echo ... login.obj
 	@echo ... login.i
 	@echo ... login.s

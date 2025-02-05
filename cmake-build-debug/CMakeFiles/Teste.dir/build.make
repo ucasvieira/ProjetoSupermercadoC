@@ -96,19 +96,19 @@ CMakeFiles/Teste.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/main.c.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\main.c -o CMakeFiles\Teste.dir\main.c.s
 
-CMakeFiles/Teste.dir/gandolas.c.obj: CMakeFiles/Teste.dir/flags.make
-CMakeFiles/Teste.dir/gandolas.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gandolas.c
-CMakeFiles/Teste.dir/gandolas.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Teste.dir/gandolas.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/gandolas.c.obj -MF CMakeFiles\Teste.dir\gandolas.c.obj.d -o CMakeFiles\Teste.dir\gandolas.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gandolas.c
+CMakeFiles/Teste.dir/gondolas.c.obj: CMakeFiles/Teste.dir/flags.make
+CMakeFiles/Teste.dir/gondolas.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/gondolas.c
+CMakeFiles/Teste.dir/gondolas.c.obj: CMakeFiles/Teste.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Teste.dir/gondolas.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Teste.dir/gondolas.c.obj -MF CMakeFiles\Teste.dir\gondolas.c.obj.d -o CMakeFiles\Teste.dir\gondolas.c.obj -c C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gondolas.c
 
-CMakeFiles/Teste.dir/gandolas.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Teste.dir/gandolas.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gandolas.c > CMakeFiles\Teste.dir\gandolas.c.i
+CMakeFiles/Teste.dir/gondolas.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Teste.dir/gondolas.c.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gondolas.c > CMakeFiles\Teste.dir\gondolas.c.i
 
-CMakeFiles/Teste.dir/gandolas.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/gandolas.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gandolas.c -o CMakeFiles\Teste.dir\gandolas.c.s
+CMakeFiles/Teste.dir/gondolas.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Teste.dir/gondolas.c.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\LucasVieira\CLionProjects\ProjetoSupermercadoC\gondolas.c -o CMakeFiles\Teste.dir\gondolas.c.s
 
 CMakeFiles/Teste.dir/pdv.c.obj: CMakeFiles/Teste.dir/flags.make
 CMakeFiles/Teste.dir/pdv.c.obj: C:/Users/LucasVieira/CLionProjects/ProjetoSupermercadoC/pdv.c
@@ -142,7 +142,7 @@ CMakeFiles/Teste.dir/admin.c.s: cmake_force
 Teste_OBJECTS = \
 "CMakeFiles/Teste.dir/login.c.obj" \
 "CMakeFiles/Teste.dir/main.c.obj" \
-"CMakeFiles/Teste.dir/gandolas.c.obj" \
+"CMakeFiles/Teste.dir/gondolas.c.obj" \
 "CMakeFiles/Teste.dir/pdv.c.obj" \
 "CMakeFiles/Teste.dir/admin.c.obj"
 
@@ -151,7 +151,7 @@ Teste_EXTERNAL_OBJECTS =
 
 Teste.exe: CMakeFiles/Teste.dir/login.c.obj
 Teste.exe: CMakeFiles/Teste.dir/main.c.obj
-Teste.exe: CMakeFiles/Teste.dir/gandolas.c.obj
+Teste.exe: CMakeFiles/Teste.dir/gondolas.c.obj
 Teste.exe: CMakeFiles/Teste.dir/pdv.c.obj
 Teste.exe: CMakeFiles/Teste.dir/admin.c.obj
 Teste.exe: CMakeFiles/Teste.dir/build.make

@@ -1,5 +1,7 @@
 #include "supermercado.h"
 
+#define ARQUIVO_GONDOLAS "GONDOLAS.DAT"
+
 Pilha gondolas[MAX_PRODUTOS]; // 10 gondolas
 Pilha carrinho; // Carrinho de compras
 
@@ -9,7 +11,6 @@ void menu_gondolas() {
         printf("\n=== MENU GONDOLAS ===\n");
         printf("1. Visualizar gondolas\n");
         printf("2. Adicionar produto\n");
-        printf("3. debug pilha\n");
         printf("0. Voltar\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
@@ -21,9 +22,6 @@ void menu_gondolas() {
             break;
             case 2:
                 abastecer_gondola();
-            break;
-            case 3:
-                reinicializar_gondolas();
             break;
             case 0:
                 printf("Retornando...\n");
@@ -42,16 +40,6 @@ void inicializar_pilha(Pilha *p) {
     memset(p->itens, 0, sizeof(p->itens));
 }
 
-void inicializar_gondolas() {
-    for(int i = 0; i < MAX_PRODUTOS; i++) {
-        inicializar_pilha(&gondolas[i]);
-    }
-    printf("\nDiagnostico inicializacao:\n");
-    for(int i = 0; i < MAX_PRODUTOS; i++) {
-        printf("Gondola %d: topo=%d\n", i, gondolas[i].topo);
-    }
-}
-
 // Função para administradores abastecerem
 void abastecer_gondola() {
     if(usuario_logado.tipo != ADMIN) {
@@ -61,9 +49,11 @@ void abastecer_gondola() {
 
     int num_gondola;
     printf("\n=== ABASTECIMENTO ===\n");
-    printf("Numero da gondola (0-9): ");
+    printf("Numero da gondola (1-10): ");
     scanf("%d", &num_gondola);
     getchar();
+
+    num_gondola-=1; // Ajustar para índice 0-based
 
     if(num_gondola < 0 || num_gondola >= MAX_PRODUTOS) {
         printf("Gondola invalida!\n");
@@ -71,7 +61,7 @@ void abastecer_gondola() {
     }
 
     if(pilha_cheia(&gondolas[num_gondola])) {
-        printf("Erro: Gondola %d cheia!\n", num_gondola);
+        printf("Erro: Gondola %d cheia!\n", num_gondola +1);
         return;
     }
 
@@ -92,18 +82,24 @@ void abastecer_gondola() {
     getchar(); // Limpar buffer
 
     inserir_produto(&gondolas[num_gondola], novo);
-    printf("Produto adicionado a gondola %d!\n", num_gondola);
+    salvar_gondolas(); // Salva alterações no arquivo
+    printf("Produto adicionado a gondola %d!\n", num_gondola + 1);
 }
 
 // Função para visualização das gondolas
 void visualizar_gondolas() {
     printf("\n=== VISUALIZACAO DE GONDOLAS ===\n");
     for(int i = 0; i < MAX_PRODUTOS; i++) {
-        int quantidade = gondolas[i].topo + 1;
+        int quantidade = gondolas[i].topo +1;
 
-        printf("\nGondola %d (%d/%d itens):\n", i, quantidade, MAX_ITENS);
+        printf("\nGondola %d (%d/%d itens):", i+1, gondolas[i].topo + 1, MAX_ITENS);
+        if (gondolas[i].topo >= MAX_ITENS - 1) {
+            printf("   [Gondola Cheia!]\n");
+        }else{
+            printf("\n");
+        }
 
-        if(quantidade == 0) {
+        if(quantidade == 0) { // topo == -1
             printf(" [Gondola Vazia!]\n");
             continue;
         }
@@ -111,16 +107,18 @@ void visualizar_gondolas() {
         // Mostrar apenas itens válidos
         for(int j = 0; j < quantidade; j++) {
             // Verificar se é um item válido
-            if(strlen(gondolas[i].itens[j].nome) == 0) {
-                continue; // Ignorar itens inválidos
-            }
 
-            printf("%d. %s\n   Desc: %s\n   Peso: %.2fkg\n   Preco: R$%.2f\n",
-                   j+1,
+            printf("\n%d. %s\n   Desc: %s\n   Peso: %.2fkg\n   Preco: R$%.2f\n",
+                   j + 1,
                    gondolas[i].itens[j].nome,
                    gondolas[i].itens[j].descricao,
                    gondolas[i].itens[j].peso,
                    gondolas[i].itens[j].preco);
+
+
+        }
+        if(gondolas[i].topo >= MAX_ITENS - 1) {
+            printf("\n [Gondola Cheia!]\n");
         }
     }
 }
@@ -128,7 +126,7 @@ void visualizar_gondolas() {
 
 // Funções auxiliares da pilha
 int pilha_cheia(Pilha *p) {
-    return p->topo == MAX_ITENS - 1;
+    return p->topo == MAX_ITENS -1;
 }
 
 int pilha_vazia(Pilha *p) {
@@ -151,12 +149,53 @@ Produto retirar_produto(Pilha *p) {
     }
     return p->itens[p->topo--];
 }
-void reinicializar_gondolas() {
-    for(int i = 0; i < MAX_PRODUTOS; i++) {
-        inicializar_pilha(&gondolas[i]);
-        // Limpeza explícita dos dados
-        memset(&gondolas[i], 0, sizeof(Pilha));
-        gondolas[i].topo = -1; // Garantir que comece vazia
+
+void salvar_gondolas() {
+    FILE *arquivo = fopen(ARQUIVO_GONDOLAS, "wb");
+    if(!arquivo) {
+        printf("Erro ao salvar gondolas!\n");
+        return;
     }
-    printf("Gondolas reinicializadas com sucesso!\n");
+
+    // Salvar todas as gondolas de uma vez
+    fwrite(gondolas, sizeof(Pilha), MAX_PRODUTOS, arquivo);
+    printf("Gondola salva......\n");
+    fclose(arquivo);
+}
+
+void carregar_gondolas() {
+    FILE *arquivo = fopen(ARQUIVO_GONDOLAS, "rb");
+    if (!arquivo) {
+        printf("Arquivo de gondolas nao encontrado. Iniciando com gondolas vazias.\n");
+        reinicializar_gondolas(); // Inicializa explicitamente
+        return;
+    }
+
+    // Verificar tamanho correto do arquivo
+    fseek(arquivo, 0, SEEK_END);
+    long tamanho = ftell(arquivo);
+    rewind(arquivo);
+
+    if (tamanho != sizeof(Pilha) * MAX_PRODUTOS) {
+        printf("Arquivo corrompido. Recriando gondolas...\n");
+        fclose(arquivo);
+        reinicializar_gondolas();
+        return;
+    }
+
+    // Carregar dados válidos
+    size_t lidos = fread(gondolas, sizeof(Pilha), MAX_PRODUTOS, arquivo);
+    fclose(arquivo);
+
+    if (lidos != MAX_PRODUTOS) {
+        printf("Erro ao ler gondolas. Recriando...\n");
+        reinicializar_gondolas();
+    }
+}
+
+void reinicializar_gondolas() {
+    for (int i = 0; i < MAX_PRODUTOS; i++) {
+        inicializar_pilha(&gondolas[i]);
+    }
+    salvar_gondolas(); // Salva o estado vazio
 }

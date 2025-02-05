@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "supermercado.h"
 
-inicializar_gondolas();
 
 int main() {
     // Solicitar credenciais
@@ -20,6 +19,7 @@ int main() {
 
     int opcao;
     do {
+        carregar_gondolas();
         printf("\n=== MENU PRINCIPAL ===\n");
         printf("1. Caixa/PDV\n");
         if (usuario_logado.tipo == ADMIN) {

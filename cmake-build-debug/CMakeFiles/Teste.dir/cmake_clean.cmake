@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Teste.dir/admin.c.obj"
   "CMakeFiles/Teste.dir/admin.c.obj.d"
-  "CMakeFiles/Teste.dir/gandolas.c.obj"
-  "CMakeFiles/Teste.dir/gandolas.c.obj.d"
+  "CMakeFiles/Teste.dir/gondolas.c.obj"
+  "CMakeFiles/Teste.dir/gondolas.c.obj.d"
   "CMakeFiles/Teste.dir/login.c.obj"
   "CMakeFiles/Teste.dir/login.c.obj.d"
   "CMakeFiles/Teste.dir/main.c.obj"
