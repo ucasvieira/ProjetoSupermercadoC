@@ -56,6 +56,7 @@ void carregar_gondolas();
 void editar_gondola();
 void remover_gondola();
 void reinicalizar_gondolas();
+void limpar_gondola();
 // Operações do PDV
 extern Fila fila_pdv;
 extern Pilha carrinho;

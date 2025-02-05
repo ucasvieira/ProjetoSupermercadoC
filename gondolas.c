@@ -1,5 +1,6 @@
 #include "supermercado.h"
 
+
 #define ARQUIVO_GONDOLAS "GONDOLAS.DAT"
 
 Pilha gondolas[MAX_PRODUTOS]; // 10 gondolas
@@ -11,6 +12,7 @@ void menu_gondolas() {
         printf("\n=== MENU GONDOLAS ===\n");
         printf("1. Visualizar gondolas\n");
         printf("2. Adicionar produto\n");
+        printf("3. Limpar Gandola\n");
         printf("0. Voltar\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
@@ -23,6 +25,8 @@ void menu_gondolas() {
             case 2:
                 abastecer_gondola();
             break;
+            case 3:
+                limpar_gondola();
             case 0:
                 printf("Retornando...\n");
             break;
@@ -198,4 +202,29 @@ void reinicializar_gondolas() {
         inicializar_pilha(&gondolas[i]);
     }
     salvar_gondolas(); // Salva o estado vazio
+}
+
+void limpar_gondola() {
+
+    int num_gondola;
+    printf("\n=== LIMPAR GONDOLA ===\n");
+    printf("Numero da gondola (1-10): ");
+    scanf("%d", &num_gondola);
+    getchar();
+
+    num_gondola-=1; // Ajustar para índice 0-based
+
+    if(num_gondola < 0 || num_gondola >= MAX_PRODUTOS) {
+        printf("Gondola invalida!\n");
+        return;
+    }
+
+    if(pilha_vazia(&gondolas[num_gondola])) {
+        printf("Erro: Gondola %d cheia!\n", num_gondola +1);
+        return;
+    }
+
+    inicializar_pilha(&gondolas[num_gondola]);
+    salvar_gondolas();
+    printf("Gondola %d limpa!\n", num_gondola + 1);
 }
