@@ -8,7 +8,10 @@
 
 #define MAX_USUARIOS 30
 #define MAX_ITENS 5
-#define MAX_PRODUTOS 10
+#define MAX_GONDOLAS 10      // Quantidade de gôndolas
+#define MAX_ITENS_GONDOLA 5
+#define MAX_ITENS_CARRINHO 20// Capacidade de cada gôndola
+#define MAX_PRODUTOS 100
 
 
 typedef enum {USUARIO, ADMIN} TipoUsuario;
@@ -27,15 +30,22 @@ typedef struct {
     char descricao[200];
     float peso;
     float preco;
+    int num_gondola;
 } Produto;
 
 typedef struct {
     Produto itens[MAX_ITENS];
     int topo;  // Deve ser inicializado com -1
-} Pilha;
+} Gondola;
 
 typedef struct {
-    Produto produtos[MAX_PRODUTOS];
+    Produto itens[MAX_ITENS_CARRINHO];
+    int topo;  // Deve ser inicializado com -1
+} Carrinho;
+
+typedef struct {
+    Produto *produtos;  // Vetor dinâmico
+    int capacidade;
     int frente;
     int tras;
 } Fila;
@@ -45,8 +55,8 @@ int login(char nome[100], char prontuario[15]);
 void cadastrar_usuario();
 
 // Operações das gôndolas
-extern Pilha gondolas[MAX_PRODUTOS];
-extern Pilha carrinho;
+extern Gondola gondolas[MAX_GONDOLAS];
+extern Carrinho carrinho;
 void menu_gondolas();
 void abastecer_gondola();
 void visualizar_gondolas();
@@ -54,26 +64,44 @@ void reinicializar_gondolas();
 void salvar_gondolas();
 void carregar_gondolas();
 void editar_gondola();
-void remover_gondola();
 void reinicalizar_gondolas();
 void limpar_gondola();
+
+
 // Operações do PDV
 extern Fila fila_pdv;
-extern Pilha carrinho;
+void menu_pdv();
+void menu_carrinho();
+void remover_do_carrinho();
+void finalizar_compra();
 void inicializar_pdv();
 void adicionar_ao_carrinho();
 void processar_pdv();
+void inserir_produto_carrinho(Carrinho *p, Produto prod);
+// Funções da fila
+void inicializar_fila(Fila *f);
+int fila_cheia(Fila *f);
+int fila_vazia(Fila *f);
+void adicionar_na_fila(Fila *f, Produto prod);
+Produto remover_da_fila(Fila *f);
+
+// Funções do carrinho
+void mostrar_carrinho();
+void remover_do_carrinho();
+int carrinho_vazio(Carrinho *p);
+int carrinho_cheio(Carrinho *p);
 
 // Funções auxiliares
-int pilha_cheia(Pilha *p);
-int pilha_vazia(Pilha *p);
-void inserir_produto(Pilha *p, Produto prod);
-Produto retirar_produto(Pilha *p);
+int pilha_cheia(Gondola *p);
+int pilha_vazia(Gondola *p);
+void inserir_produto(Gondola *p, Produto prod);
+Produto retirar_produto(Gondola *p);
 int fila_cheia(Fila *f);
 int fila_vazia(Fila *f);
 void adicionar_na_fila(Fila *f, Produto prod);
 Produto remover_da_fila(Fila *f);
 void gerar_cupom_fiscal(Fila *f);
+void inicializar_pilha(Gondola *p);
 
 
 // Funções de administração

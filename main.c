@@ -19,6 +19,7 @@ int main() {
 
     int opcao;
     do {
+        inicializar_pdv();
         carregar_gondolas();
         printf("\n=== MENU PRINCIPAL ===\n");
         printf("1. Caixa/PDV\n");
@@ -33,7 +34,7 @@ int main() {
 
         switch(opcao) {
             case 1:
-
+                menu_pdv();
             break;
             case 2:
                 if (usuario_logado.tipo == ADMIN) {
