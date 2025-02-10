@@ -1,2 +1,3 @@
 *.DAT
 *.exe
+cmake-build-debug/
