@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include "supermercado.h"
 
-
 int main() {
-    // Solicitar credenciais
     char nome[100], prontuario[15];
     printf("\n=== LOGIN ===\n");
     printf("Nome: ");
@@ -15,7 +13,6 @@ int main() {
     fgets(prontuario, sizeof(prontuario), stdin);
     prontuario[strcspn(prontuario, "\n")] = '\0';
     if (!login(nome, prontuario)) return 1;
-
 
     int opcao;
     do {

@@ -1,5 +1,4 @@
 #include <ctype.h>
-
 #include "supermercado.h"
 
 void gerenciar_usuarios() {
@@ -10,7 +9,7 @@ void gerenciar_usuarios() {
         printf("2. Adicionar usuario\n");
         printf("3. Remover usuario\n");
         printf("4. Editar usuario\n");
-        printf("5. Verificar arquivo RAW\n"); // Nova opção
+        printf("5. Verificar arquivo RAW\n");
         printf("0. Voltar\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
@@ -19,22 +18,22 @@ void gerenciar_usuarios() {
         switch(opcao) {
             case 1:
                 listar_usuarios();
-            break;
+                break;
             case 2:
                 adicionar_usuario_admin();
-            break;
+                break;
             case 3:
                 remover_usuario();
-            break;
+                break;
             case 4:
                 editar_usuario();
-            break;
+                break;
             case 5:
                 verificar_arquivo_usuarios();
-            break;
+                break;
             case 0:
                 printf("Voltando...\n");
-            break;
+                break;
             default:
                 printf("Opcao invalida!\n");
         }
@@ -48,7 +47,6 @@ void listar_usuarios() {
         return;
     }
 
-    // Ler e armazenar temporariamente todos os usuários
     fseek(arquivo, 0, SEEK_END);
     long file_size = ftell(arquivo);
     int num_usuarios = file_size / sizeof(Usuario);
@@ -58,10 +56,8 @@ void listar_usuarios() {
     fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
     fclose(arquivo);
 
-    // Ordenar localmente para garantir (opcional, se o arquivo já estiver correto)
     qsort(usuarios, num_usuarios, sizeof(Usuario), compara_usuarios);
 
-    // Listar ordenado
     printf("\n=== LISTA DE USUÁRIOS (ORDENADA) ===\n");
     for(int i = 0; i < num_usuarios; i++) {
         printf("Nome: %s\n", usuarios[i].nome);
@@ -71,7 +67,6 @@ void listar_usuarios() {
     }
 
     free(usuarios);
-
 }
 
 void adicionar_usuario_admin() {
@@ -81,7 +76,6 @@ void adicionar_usuario_admin() {
         return;
     }
 
-    // Carregar usuários existentes
     fseek(arquivo, 0, SEEK_END);
     long file_size = ftell(arquivo);
     int num_usuarios = file_size / sizeof(Usuario);
@@ -91,7 +85,6 @@ void adicionar_usuario_admin() {
     fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
     fclose(arquivo);
 
-    // Cadastrar novo usuário
     Usuario novo;
     printf("\nNome: ");
     fgets(novo.nome, 100, stdin);
@@ -174,7 +167,6 @@ int compara_usuarios(const void *a, const void *b) {
     const Usuario *ua = (const Usuario *)a;
     const Usuario *ub = (const Usuario *)b;
 
-    // Comparação case-insensitive
     const char *nomeA = ua->nome;
     const char *nomeB = ub->nome;
 
@@ -194,7 +186,6 @@ void editar_usuario() {
         return;
     }
 
-    // Carregar todos os usuários
     fseek(arquivo, 0, SEEK_END);
     long file_size = ftell(arquivo);
     int num_usuarios = file_size / sizeof(Usuario);
@@ -210,13 +201,11 @@ void editar_usuario() {
     fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
     fclose(arquivo);
 
-    // Solicitar o prontuário do usuário a ser editado
     char prontuario[15];
     printf("Prontuario do usuario a editar: ");
     fgets(prontuario, 15, stdin);
     prontuario[strcspn(prontuario, "\n")] = '\0';
 
-    // Procurar o usuário pelo prontuário
     int index = -1;
     for (int i = 0; i < num_usuarios; i++) {
         if (strcmp(usuarios[i].prontuario, prontuario) == 0) {
@@ -231,7 +220,6 @@ void editar_usuario() {
         return;
     }
 
-    // Editar os dados do usuário
     Usuario *user = &usuarios[index];
     printf("Novo nome [atual: %s]: ", user->nome);
     char novo_nome[100];
@@ -250,10 +238,8 @@ void editar_usuario() {
     fgets(tipo, 2, stdin);
     if (strlen(tipo) > 0) user->tipo = atoi(tipo) ? ADMIN : USUARIO;
 
-    // Ordenar o array de usuários após a edição
     qsort(usuarios, num_usuarios, sizeof(Usuario), compara_usuarios);
 
-    // Reescrever o arquivo com os usuários ordenados
     arquivo = fopen("USUARIOS.DAT", "wb");
     if (!arquivo) {
         printf("Erro ao abrir arquivo para escrita!\n");
@@ -277,7 +263,6 @@ void verificar_arquivo_usuarios() {
 
     printf("\n=== CONTEUDO CRU DO ARQUIVO ===\n");
 
-    // Obter tamanho do arquivo
     fseek(arquivo, 0, SEEK_END);
     long file_size = ftell(arquivo);
     rewind(arquivo);
@@ -286,7 +271,6 @@ void verificar_arquivo_usuarios() {
     printf("Tamanho do arquivo: %ld bytes\n", file_size);
     printf("Numero de usuarios: %d\n", num_usuarios);
 
-    // Ler e mostrar na ordem física do arquivo
     for (int i = 0; i < num_usuarios; i++) {
         Usuario u;
         fread(&u, sizeof(Usuario), 1, arquivo);

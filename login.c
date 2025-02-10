@@ -1,8 +1,9 @@
-// login.c (versão corrigida)
+// login.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "supermercado.h"
+
 Usuario usuario_logado;
 
 int login(char nome[100], char prontuario[15]) {
@@ -29,8 +30,6 @@ int login(char nome[100], char prontuario[15]) {
     // Ler todos os usuários
     fread(usuarios, sizeof(Usuario), num_usuarios, arquivo);
     fclose(arquivo);
-
-
 
     // Busca binária corrigida
     int encontrado = 0;
@@ -67,20 +66,17 @@ int login(char nome[100], char prontuario[15]) {
                 }
             }
             break;
-        }
-        else if (cmp < 0) {
+        } else if (cmp < 0) {
             right = mid - 1;
-        }
-        else {
+        } else {
             left = mid + 1;
         }
     }
 
-
     free(usuarios);
 
     if (!encontrado) {
-        printf("\nUSÚARIO E/OU PRONTUÁRIO INVÁLIDO!\n");
+        printf("\nUSUÁRIO E/OU PRONTUÁRIO INVÁLIDO!\n");
         exit(1);
     }
 

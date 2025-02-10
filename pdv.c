@@ -49,7 +49,6 @@ void menu_pdv() {
     } while(opcao != 0);
 }
 
-
 void remover_do_carrinho() {
     if(carrinho_vazio(&carrinho)) {
         printf("Carrinho vazio!\n");
@@ -58,9 +57,9 @@ void remover_do_carrinho() {
 
     Produto p = retirar_produto_carrinho(&carrinho);
     printf("Item removido: %s\n", p.nome);
-    // Devolve o produto à gondola original
+
+    // Devolve o produto à gôndola original
     if(!pilha_cheia(&gondolas[p.num_gondola])) {
-        carrinho.topo--;
         inserir_produto(&gondolas[p.num_gondola], p);
         printf("Item devolvido a gondola %d\n", p.num_gondola + 1);
     } else {
@@ -101,12 +100,10 @@ void finalizar_compra() {
 }
 
 void gerar_cupom_fiscal(Fila *f) {
-    printf("eae teste boga\n");
     time_t now = time(NULL);
     struct tm *t = localtime(&now);
     char data_hora[50];
     strftime(data_hora, sizeof(data_hora), "%d/%m/%Y %H:%M:%S", t);
-    printf("eae teste boga\n");
     float total = 0;
 
     printf("\n=== CUPOM FISCAL ===\n");
@@ -132,12 +129,11 @@ void gerar_cupom_fiscal(Fila *f) {
     inicializar_fila(f);
 }
 
-
 void adicionar_ao_carrinho() {
     int num_gondola;
     printf("Numero da gondola (1-%d): ", MAX_GONDOLAS);
     scanf("%d", &num_gondola);
-    num_gondola-=1  ;
+    num_gondola -= 1;
 
     if(num_gondola < 0 || num_gondola >= MAX_GONDOLAS) {
         printf("Gondola inválida!\n");
