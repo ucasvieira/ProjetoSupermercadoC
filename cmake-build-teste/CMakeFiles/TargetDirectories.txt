@@ -1,0 +1,3 @@
+C:/Users/LucasVieira/Downloads/ProjetoSupermercadoC/cmake-build-teste/CMakeFiles/ProjetoSupermercadoC.dir
+C:/Users/LucasVieira/Downloads/ProjetoSupermercadoC/cmake-build-teste/CMakeFiles/edit_cache.dir
+C:/Users/LucasVieira/Downloads/ProjetoSupermercadoC/cmake-build-teste/CMakeFiles/rebuild_cache.dir
